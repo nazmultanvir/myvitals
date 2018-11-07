@@ -1,22 +1,40 @@
 import React, { Component } from "react";
-import { StatusBar, StyleSheet } from "react-native";
+import { StatusBar, StyleSheet, Image } from "react-native";
 import { Container, Button, Text } from "native-base";
-
 import SplashScreen from "react-native-splash-screen";
+
+import { createStackNavigator } from "react-navigation";
+import Home from "./src/Home/Home";
+import gettingStarted from "./src/gettingStarted/gettingStarted";
+import SignIn from "./src/SignIn/SignIn";
+
+const MainRouter = createStackNavigator(
+  {
+    Home: {
+      screen: Home,
+    },
+    gettingStarted: {
+      screen: gettingStarted,
+    },
+    SignIn: {
+      screen: SignIn,
+    },
+  },
+  {
+    initialRouteName: "gettingStarted",
+    headerMode: "none",
+  },
+);
 
 export default class App extends Component {
   componentDidMount() {
-    // do stuff while splash screen is shown
-    // After having done stuff (such as async tasks) hide the splash screen
     SplashScreen.hide();
   }
   render() {
     return (
       <Container>
-        <StatusBar backgroundColor="blue" barStyle="light-content" />
-        <Button>
-          <Text>Button</Text>
-        </Button>
+        <StatusBar backgroundColor={"transparent"} translucent />
+        <MainRouter />
       </Container>
     );
   }
