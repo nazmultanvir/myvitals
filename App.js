@@ -21,7 +21,7 @@ const MainRouter = createStackNavigator(
     },
   },
   {
-    initialRouteName: "gettingStarted",
+    initialRouteName: "SignIn",
     headerMode: "none",
   },
 );
